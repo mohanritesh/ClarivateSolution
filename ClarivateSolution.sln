@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32929.385
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClarivateApp", "ClarivateApp\ClarivateApp.csproj", "{1E8881F7-1F8E-4159-A175-C4B54B8AE44E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClarivateApp.Tests", "ClarivateApp.Tests\ClarivateApp.Tests.csproj", "{1AF1AD9C-6D65-4298-9121-CDD03CA3CAD3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1E8881F7-1F8E-4159-A175-C4B54B8AE44E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E8881F7-1F8E-4159-A175-C4B54B8AE44E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E8881F7-1F8E-4159-A175-C4B54B8AE44E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E8881F7-1F8E-4159-A175-C4B54B8AE44E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1AF1AD9C-6D65-4298-9121-CDD03CA3CAD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AF1AD9C-6D65-4298-9121-CDD03CA3CAD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AF1AD9C-6D65-4298-9121-CDD03CA3CAD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AF1AD9C-6D65-4298-9121-CDD03CA3CAD3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {57D080D9-C055-417E-A420-473593E5C698}
+	EndGlobalSection
+EndGlobal
