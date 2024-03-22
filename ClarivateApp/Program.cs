@@ -13,7 +13,7 @@ namespace ClarivateApp
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-                    
+
             builder.Services.AddControllers(options =>
             {
                 options.RespectBrowserAcceptHeader = true;
@@ -61,11 +61,10 @@ namespace ClarivateApp
                     policyBuilder =>
                     {
                         policyBuilder
-                        .AllowAnyOrigin()
-                        .AllowAnyHeader()
-                        .AllowAnyMethod();
-                        
-
+                         .WithOrigins("http://localhost:3000")
+                         .AllowAnyHeader()
+                         .AllowAnyMethod()
+                         .AllowCredentials();
                     });
             });
 
@@ -82,7 +81,7 @@ namespace ClarivateApp
 
             app.UseCors("AllowAll");
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseAuthorization();
 
