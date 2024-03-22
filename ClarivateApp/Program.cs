@@ -13,17 +13,7 @@ namespace ClarivateApp
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-
-            //builder.Services.AddControllers()
-            //    .AddJsonOptions(options =>
-            //    {
-            //        // Set the JSON serializer options
-            //        options.JsonSerializerOptions.PropertyNamingPolicy = null; // To preserve the original property names
-            //        options.JsonSerializerOptions.IgnoreNullValues = true; // Ignore null values when serializing
-            //        options.JsonSerializerOptions.WriteIndented = true; // Write JSON with indentation for better readability
-            //        options.JsonSerializerOptions.MaxDepth = 64; // Set maximum serialization depth to avoid potential stack overflow exceptions
-            //    });
-
+                    
             builder.Services.AddControllers(options =>
             {
                 options.RespectBrowserAcceptHeader = true;
@@ -71,9 +61,10 @@ namespace ClarivateApp
                     policyBuilder =>
                     {
                         policyBuilder
-                        .AllowAnyOrigin() // Add your frontend URL here
+                        .AllowAnyOrigin()
                         .AllowAnyHeader()
                         .AllowAnyMethod();
+                        
 
                     });
             });

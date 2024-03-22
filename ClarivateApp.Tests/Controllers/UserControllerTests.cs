@@ -1,5 +1,6 @@
 ﻿using ClarivateApp.Controllers;
 using Moq;
+using Moq.Protected;
 using System;
 using System.Net;
 using System.Net.Http;
@@ -12,33 +13,34 @@ namespace ClarivateApp.Tests.Controllers
     {
 
         [Fact]
-        public async Task GetRandomUser_StateUnderTest_ExpectedBehavior()
+        public async Task GetRandomUser_Returns_Ok_With_Valid_Response()
         {
             // Arrange
-            var mockRepository = new MockRepository(MockBehavior.Loose);
-            var httpClientFactoryMock = mockRepository.Create<IHttpClientFactory>();
-            var httpClientMock = mockRepository.Create<HttpClient>();
+            var httpClientFactoryMock = new Mock<IHttpClientFactory>();
+            var handlerMock = new Mock<HttpMessageHandler>();
 
             var validResponseContent = @"{
-                ""results"": [
-                    {
-                        ""gender"": ""female"",
-                        ""name"": { ""title"": ""Ms"", ""first"": ""Vanessa"", ""last"": ""Carter"" },
-                        ""email"": ""vanessa.carter@example.com""
-                    }
-                ]
-            }";
+            ""results"": [
+                {
+                    ""gender"": ""female"",
+                    ""name"": { ""title"": ""Ms"", ""first"": ""Vanessa"", ""last"": ""Carter"" },
+                    ""email"": ""vanessa.carter@example.com""
+                }
+             ]}";
 
             var validResponse = new HttpResponseMessage(HttpStatusCode.OK)
             {
                 Content = new StringContent(validResponseContent)
             };
 
-            httpClientMock.Setup(c => c.GetAsync(It.IsAny<string>()))
+            handlerMock.Protected()
+                .Setup<Task<HttpResponseMessage>>("SendAsync", ItExpr.IsAny<HttpRequestMessage>(), ItExpr.IsAny<CancellationToken>())
                 .ReturnsAsync(validResponse);
 
+            var httpClient = new HttpClient(handlerMock.Object);
+
             httpClientFactoryMock.Setup(f => f.CreateClient(It.IsAny<string>()))
-                .Returns(httpClientMock.Object);
+                .Returns(httpClient);
 
             var controller = new UserController(httpClientFactoryMock.Object);
 
