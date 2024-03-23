@@ -61,7 +61,7 @@ namespace ClarivateApp
                     policyBuilder =>
                     {
                         policyBuilder
-                         .WithOrigins("http://localhost:3000")
+                         .WithOrigins("http://localhost:3000", "http://clarivate-ui.s3-website.us-east-2.amazonaws.com")
                          .AllowAnyHeader()
                          .AllowAnyMethod()
                          .AllowCredentials();
